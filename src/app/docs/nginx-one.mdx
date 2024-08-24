@@ -102,7 +102,7 @@ We have provided a few NGINX instances below for you to use for the remainder of
     <DockerContainer>
     <Docker 
         name="nginx-plus-1" 
-        desc="This is an example Docker container." 
+        desc="NGINX Plus with Agent." 
         image="private-registry.nginx.com/nginx-plus/agent:debian" 
         env={[
             {name: "NGINX_AGENT_SERVER_GRPCPORT", value: "443"},
@@ -114,8 +114,21 @@ We have provided a few NGINX instances below for you to use for the remainder of
     />
     <Docker 
         name="nginx-plus-2" 
-        desc="This is an example Docker container." 
+        desc="NGINX Plus with Agent." 
         image="private-registry.nginx.com/nginx-plus/agent:debian" 
+        env={[
+            {name: "NGINX_AGENT_SERVER_GRPCPORT", value: "443"},
+            {name: "NGINX_AGENT_SERVER_HOST", value: "agent.connect.nginx.com"},
+            {name: "NGINX_AGENT_TLS_ENABLE", value: "true"},
+            {name: "NGINX_AGENT_TLS_SKIP_VERIFY", value: "false"},
+            {name: "NGINX_AGENT_SERVER_TOKEN", isVariable: true, isSecret: true},
+        ]} 
+    />
+
+    <Docker 
+        name="nginx-oss-agent"
+        desc="NGINX OSS with NGINX Agent."
+        image="private-registry-test.nginx.com/nginx/agent:1.27.1-alpine"
         env={[
             {name: "NGINX_AGENT_SERVER_GRPCPORT", value: "443"},
             {name: "NGINX_AGENT_SERVER_HOST", value: "agent.connect.nginx.com"},
