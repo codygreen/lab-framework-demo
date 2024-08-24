@@ -61,6 +61,11 @@ export async function checkAPI({
   headerValue = null,
   targetStatusCode = 200
 }) {
+
+  if(componentName == null && url == null) {
+    return false;
+  }
+  
   if (componentName) {
     const determinedUrl = await determineUrl(componentName);
     url = `${determinedUrl}${path}`;
