@@ -9,7 +9,7 @@ import React, { useState } from "react";
  * @param {React.ReactNode} prop.children  - The content to display of the container.
  * @returns {JSX.Element} The Collapsible component.
  */
-export function Collapsible({ title, children }) {
+export function Collapsible({ title, showName = 'Show', hideName = 'Hide', children }) {
   const [isMinimized, setIsMinimized] = useState(true)
 
   const handleMinimizeClick = () => {
@@ -24,7 +24,7 @@ export function Collapsible({ title, children }) {
         <button
           className="inline-block bg-gray-500 text-white font-bold py-2 px-4 rounded m-2"
           onClick={handleMinimizeClick}>
-          {isMinimized ? "Show" : "Hide"}
+          {isMinimized ? showName : hideName}
         </button>
         {!isMinimized && (
           <>
