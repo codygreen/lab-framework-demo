@@ -6,10 +6,12 @@ import React, { useState } from "react";
 /**
  * Represents a Collapsible component.
  * @param {string} props.title             - The title of the container.
+ * @param {string} props.showName          - (Optional) The name button when this section is minimized, defaults to "Show".
+ * @param {string} props.hideName          - (Optional) The name button when this section is expanded, defaults to "Hide".
  * @param {React.ReactNode} prop.children  - The content to display of the container.
  * @returns {JSX.Element} The Collapsible component.
  */
-export function Collapsible({ title, showName = 'Show', hideName = 'Hide', children }) {
+export function Collapsible({ title, children, showName = "Show", hideName = "Hide" }) {
   const [isMinimized, setIsMinimized] = useState(true)
 
   const handleMinimizeClick = () => {
