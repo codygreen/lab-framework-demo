@@ -12,7 +12,7 @@ import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
  * @returns {JSX.Element|string} - A React component displaying the certificate value, or an error message if the certificate cannot be retrieved.
  *
  * @example
- * <CreateCertificate name="exampleVariable" />
+ * <CreateCertificate name="www.example.com" />
  */
 export async function CreateCertificate({ commonName }) {
   if (!commonName) return "commonName empty";
