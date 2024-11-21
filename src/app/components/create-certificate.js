@@ -7,8 +7,7 @@ import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 /**
  * Asynchronously retrieves a newly created certificate and key and displays it within a React component.
  *
- * @param {Object} props - The properties object.
- * @param {string} props.commonName - The host name for the certificate to create.
+ * @param {string} commonName - The host name for the certificate to create.
  * @returns {JSX.Element|string} - A React component displaying the certificate value, or an error message if the certificate cannot be retrieved.
  *
  * @example
