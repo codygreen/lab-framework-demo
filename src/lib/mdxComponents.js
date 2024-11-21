@@ -15,6 +15,7 @@ import { Collapsible } from "@/app/components/collapsible";
 import DockerContainer from "@/app/components/docker-container";
 import APICheckContainer from "@/app/components/api-check-container";
 import dynamic from 'next/dynamic';
+import { CreateCertificate } from "@/app/components/create-certificate";
 
 const ImageModalClient = dynamic(() => import('@/app/components/image-modal-client'), { ssr: false });
 
@@ -24,6 +25,7 @@ const MDXComponents = {
   APIHeaderCheck,
   APIResponseCheck,
   CodeBlock,
+  CreateCertificate,
   Docker,
   DockerStatus,
   DockerContainer,
