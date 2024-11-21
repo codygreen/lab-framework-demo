@@ -435,3 +435,27 @@ The **UDFComponent** provides a tile with a button that will open the web shell 
 <UDFComponent
   name="NGINX Plus"
 />
+
+<br />
+---
+
+## CreateCertificate
+
+The **CreateCertificate** provides a tile with a button that will create PEM-formatted certificates and keys.
+
+| Variable        | Description                                            | Required |
+|-----------------|--------------------------------------------------------|----------|
+| **commonName**  | The common name to use when creating the certificate.  | Yes      |
+
+
+### Example
+
+```jsx
+<CreateCertificate
+  commonName="mywebsite.f5demos.com"
+/>
+```
+
+<CreateCertificate
+  commonName="mywebsite.f5demos.com"
+/>

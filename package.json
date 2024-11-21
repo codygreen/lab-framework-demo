@@ -14,6 +14,7 @@
     "@next/mdx": "^14.2.5",
     "@pondorasti/remark-img-links": "^1.0.8",
     "@types/mdx": "^2.0.13",
+    "create-cert": "^1.0.6",
     "gray-matter": "^4.0.3",
     "lodasync": "^1.0.7",
     "next": "^14.2.6",
