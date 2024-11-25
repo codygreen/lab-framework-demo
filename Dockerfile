@@ -39,8 +39,8 @@ RUN \
 FROM base AS runner
 WORKDIR /app
 
-# Add Docker CLI & cURL (for troubleshooting)
-RUN apk add --no-cache docker-cli curl
+# Add Docker CLI & cURL (for troubleshooting), OpenSSL for certificate generation.
+RUN apk add --no-cache docker-cli curl openssl
 
 ENV NODE_ENV=production
 # Uncomment the following line in case you want to disable telemetry during runtime.
