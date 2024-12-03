@@ -22,7 +22,7 @@ export async function CreateCertificate({ commonName }) {
     value = await createCertificate(commonName);
 
   } catch (error) {
-    console.error("unable to retrieve certificate: ", commonName);
+    console.error(`unable to retrieve certificate ${commonName}: ${error.message}`);
     return "Error retrieving certificate";
   }
 
@@ -30,7 +30,7 @@ export async function CreateCertificate({ commonName }) {
     <span>
       <Suspense fallback={"loading..."}>
         <span className="pr-4">Certificate for <span className="font-bold italic">{commonName}</span></span>
-        <DownloadItem item={value.cert} fileName="certificate.pem" />
+        <DownloadItem item={value.cert} fileName={`${commonName}.crt.pem`} />
         <div className="relative bg-gray-800 rounded-lg">
           <CodeBlockCopy>{value.cert}</CodeBlockCopy>
           <SyntaxHighlighter
@@ -42,7 +42,7 @@ export async function CreateCertificate({ commonName }) {
           </SyntaxHighlighter>
         </div>
         <span className="pr-4">Key for <span className="font-bold italic">{commonName}</span></span>
-        <DownloadItem item={value.key} fileName="key.pem" />
+        <DownloadItem item={value.key} fileName={`${commonName}.key.pem`} />
         <div className="relative bg-gray-800 rounded-lg">
           <CodeBlockCopy>{value.key}</CodeBlockCopy>
           <SyntaxHighlighter
