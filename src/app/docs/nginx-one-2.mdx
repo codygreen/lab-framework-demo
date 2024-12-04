@@ -30,11 +30,11 @@ The NGINX One Console provides several key metrics for us to evaluate:
 The NGINX One Console displays the number of certificates currently installed on the NGINX instance as well as the current status of the certificates, expiration date,
 and the certificate's *Subject Name*.
 
-We'll get to explore this in greater detail later in the lab when we install a SSL/TLS certificate.
+We'll get to explore this in greater detail later in the lab when we configure NGINX to use a TLS certificate.
 
 #### Instance CVEs
 
-The NGINX One Console displays the number of CVEs associated with the NGINX instance as well as their severity.  You can also find out more information about each CVE
+The NGINX One Console displays the number of CVEs associated with the NGINX instance as well as their severity. You can also find out more information about each CVE
 with a link to the CVE Program website with extensive details about the CVE in question.
 
 #### Configuration Recommendations
@@ -366,7 +366,7 @@ The configuration also sets up error handling:
 
 ### Using a TLS certificate
 
-In this section, we will configure our **<GetVariable name="nginx-plus-1" />** NGINX instance to leverage an SSL/TLS certificate.
+In this section, we will configure our **<GetVariable name="nginx-plus-1" />** NGINX instance to leverage an existing TLS certificate for encrypted communication. Later, we will perform more advanced certificate functions in [Part 4](./nginx-one-4.mdx) of this lab.
 
 1. In the NGINX One Console, edit the **/etc/nginx/conf.d/default.conf** file again on the **<GetVariable name="nginx-plus-1" />** instance. Add the following to the server block:
 
@@ -881,9 +881,9 @@ Great job! Through the use of Config Sync Groups, you have now accomplished a co
 
     > :point_right: It is possible to mix NGINX Plus and NGINX OSS instances in a Config Sync Group. However, the NGINX configuration must be compatible for both the NGINX Plus and NGINX OSS instances. For example, you will not be able to publish configurations that are exclusive to NGINX Plus, like [JWT authentication](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-jwt-authentication/) to NGINX OSS. However, the ability to mix NGINX editions in a Config Sync Group can be very valuable in certain situations, such as when migrating from NGINX OSS to NGINX Plus.
 
-## Lab Cleanup
+## Cleanup
 
-Time to clean up the remaining resources you created in this lab. As a safety precaution, the NGINX One console will not allow you to delete an instance that is online. We will first have to shut down the instances before deleting them from the NGINX One console.
+Time to clean up the remaining resources you created in this part of the lab. As a safety precaution, the NGINX One console will not allow you to delete an instance that is online. We will first have to shut down the instances before deleting them from the NGINX One console.
 
 1. Click **Stop** on all the Docker instances displayed below:
 
@@ -1002,9 +1002,8 @@ Time to clean up the remaining resources you created in this lab. As a safety pr
 
     ![Confirming the deletion](media/cleanup-11.png)
 
-## Optional Lab
+## Moving On
 
-If you would like to continue to the optional portion of the lab, click [here](./nginx-one-3.mdx).
-Otherwise, this is the end of the lab.
+In this lab, much of the work to connect instances to the NGINX One Console has been done for you. Part 3 of this lab is focused on manually connecting NGINX instances to the console, and is *optional*. If you would like to continue to this optional portion of the lab, click [here](./nginx-one-3.mdx).
 
-Thank you for your time and attention to experience NGINX One Console!
+Otherwise, Part 4 of the lab is focused on the Certificate Management features of the console. [Proceed to Part 4 of the lab](./nginx-one-4.mdx).
