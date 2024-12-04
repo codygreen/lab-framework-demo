@@ -14,7 +14,7 @@ From the NGINX One Console you can:
 - Ensure that your certificates are current and correct.
 - Manage your certificates from a central location. This can help you simplify operations and remotely update, rotate, and deploy those certificates.
 
-   ![Certificates in NGINX One Console](media/lab6-1-1.png)
+   ![Certificates in NGINX One Console](media/part4-01.png)
 
 ### Managed and Unmanaged Certificates
 
@@ -42,13 +42,13 @@ Though we will not do so in this lab, it is recommended that you convert your un
 
 1. Click **Generate**.
 
-   ![Generating a Data Plane Key](media/lab2-4.png)
+   ![Generating a Data Plane Key](media/part1-14.png)
 
 1. The Data Plane Key will be displayed. Click the _Copy_ icon to copy the key to the clipboard.
 
    > :warning: **Warning:** _SAVE THIS KEY SOMEWHERE SAFE._ There is no way to retrieve the key after you click **close**. This key will be used in multiple labs.
 
-   ![Data Plane Key](media/lab2-5.png)
+   ![Data Plane Key](media/part1-15.png)
 
 1. Now enter the Data Plane Key in the _Set Variable_ component below and click the **Save** button; this will allow the lab guide to use the key in further steps.
 
@@ -111,7 +111,7 @@ In this section, we will configure our **<GetVariable name="nginx-oss-3" />** NG
 
 1. Click _Next_ to display the diff viewer. This view will show you the changes made to the configuration.
 
-    ![Configuration diff](media/lab6-1.png)
+    ![Configuration diff](media/part4-02.png)
 
 1. Click _Save and Publish_. You will see a status message indicating changes are being published, followed by a success message after several seconds.
 
@@ -154,23 +154,23 @@ This interactive lab guide has created a short-lived, unique certificate and key
 
 1. Click _Add File_ in the upper right of the screen.
 
-    ![Add file button](media/lab6-2.png)
+    ![Add file button](media/part4-03.png)
 
 1. Click _New SSL Certificate or CA Bundle_.
 
-    ![New SSL Certificate button](media/lab6-3.png)
+    ![New SSL Certificate button](media/part4-04.png)
 
 1. Leave _Manage through NGINX One_ enabled, and enter **<GetVariable name="petname" />.f5demos.com** as the _Name_.
 
-    ![Certificate name](media/lab6-4.png)
+    ![Certificate name](media/part4-05.png)
 
 1. Select the _SSL Certificate and Key_ option.
 
-    ![SSL Certificate and Key option](media/lab6-5.png)
+    ![SSL Certificate and Key option](media/part4-06.png)
 
 1. Choose either the _Upload Files_ **OR** _Enter key and certificate as text_ option.
 
-    ![Certificate upload or text option](media/lab6-6.png)
+    ![Certificate upload or text option](media/part4-07.png)
 
 1. Depending on which option you chose above, follow the appropriate path in the following steps:
 
@@ -184,11 +184,11 @@ This interactive lab guide has created a short-lived, unique certificate and key
 
     1. Click the _Import_ button.
 
-            ![Import certificate files](media/lab6-7.png)
+            ![Import certificate files](media/part4-08.png)
 
     1. If the import was successful, you will see the following:
 
-            ![Import success](media/lab6-8.png)
+            ![Import success](media/part4-09.png)
 
     1. Click the _Save and Continue_ button.
 
@@ -198,7 +198,7 @@ This interactive lab guide has created a short-lived, unique certificate and key
 
     1. Enter both the unique certificate and key copied from the ["Your Unique Certificate and Key"](#your-unique-certificate-and-key) section above.
 
-            ![Certificate and key text fields](media/lab6-9.png)
+            ![Certificate and key text fields](media/part4-10.png)
 
     1. Click the _Save and Continue_ button.
 
@@ -208,11 +208,11 @@ This interactive lab guide has created a short-lived, unique certificate and key
 
 1. Enter **_/etc/nginx/ssl/<GetVariable name="petname" />.f5demos.com.key.pem_** in the **Key File Path** field.
 
-    ![Enter cert and key paths](media/lab6-10.png)
+    ![Enter cert and key paths](media/part4-11.png)
 
 1. Click the _Add_ button.
 
-    ![New certificate and key in tree](media/lab6-11.png)
+    ![New certificate and key in tree](media/part4-12.png)
 
 1. The certificate and key now appear in the file tree.
 
@@ -224,7 +224,7 @@ This interactive lab guide has created a short-lived, unique certificate and key
 
 1. Specify **_/etc/nginx/conf.d/<GetVariable name="petname" />.conf_** as the _File name_.
 
-    ![New configuration file](media/lab6-12.png)
+    ![New configuration file](media/part4-13.png)
 
 1. Click _Add_.
 
@@ -248,13 +248,12 @@ This interactive lab guide has created a short-lived, unique certificate and key
 
 1. Click _Next_.
 
-1. This screen will show you the new config and certificate to be published to the instance.
-
-  ![New files to publish](media/lab6-13.png)
+1. This screen will show you the new config and certificate to be published to the instance. The green **"<span style={{color: 'green'}}>A</span>"** to the right of each file name indicates they are new files to be added when published.
+  ![New files to publish](media/part4-14.png)
 
 1. Click _Save and Publish_. After about 10 seconds, you will see a notification that the publishing was successful:
 
-  ![Publish successful](media/lab6-14.png)
+  ![Publish successful](media/part4-15.png)
 
 ### Test the Configuration
 
@@ -304,18 +303,16 @@ Time to clean up the remaining resources you created in this part of the lab. As
 
 1. Wait until your **<GetVariable name="petname" />-nginxoss3** instance transitions into the **Unavailable** state before proceeding. You may need to click the _Refresh_ button at the top right of the instance list.
 
-   ![Instance Unavailable](media/cleanup-3.png)
-
 1. On the **<GetVariable name="petname" />-nginxoss3** line of the instances table, select the _Actions_ "..." context menu, and select
    _Delete_.
 
    > :warning: **Warning:** Make sure you are deleting your own instances and not someone else’s.
 
-   ![Deleting an instance](media/lab6-16.png)
+   ![Deleting an instance](media/part4-16.png)
 
 1. Confirm the deletion.
 
-   ![Confirming the deletion](media/lab6-15.png)
+   ![Confirming the deletion](media/part4-17.png)
 
 1. From the NGINX One console, in the left-hand menu in the _Manage_ section, select _Data Plane Keys_.
 
@@ -323,11 +320,11 @@ Time to clean up the remaining resources you created in this part of the lab. As
 
    > :warning: **Warning:** Make sure you are revoking your own key and not someone else’s.
 
-   ![Revoking a Data Plane Key](media/cleanup-6.png)
+   ![Revoking a Data Plane Key](media/cleanup-06.png)
 
 1. Confirm the revocation.
 
-   ![Confirming the revocation](media/cleanup-7.png)
+   ![Confirming the revocation](media/cleanup-07.png)
 
 1. Select **Revoked Keys**. Then, select the context menu for the Data Plane Key you created in lab 1, and select _Delete_.
 
