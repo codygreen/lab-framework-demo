@@ -12,29 +12,29 @@ Now that we have set up our data plane key and deployed an NGINX instance we can
 
 1. You should see your **<GetVariable name="nginx-plus-1" />** instance in the list, click on it to view the instance details.
 
-    ![NGINX One Instance List](media/lab2-7.png)
+![NGINX One Instance List](media/part2-01.png)
 
 ### Explore the instance details
 
 The NGINX One Console provides several key metrics for us to evaluate:
 
-    - Instance Certificates
-    - Instance CVEs
-    - Configuration Recommendations
-    - Instance Details
+- Instance Certificates
+- Instance CVEs
+- Configuration Recommendations
+- Instance Details
 
-    ![NGINX Plus instance details](media/lab2-8.png)
+![NGINX Plus instance details](media/part2-02.png)
 
 #### Instance Certificates
 
 The NGINX One Console displays the number of certificates currently installed on the NGINX instance as well as the current status of the certificates, expiration date,
 and the certificate's *Subject Name*.
 
-We'll get to explore this in greater detail later in the lab when we install a SSL/TLS certificate.
+We'll get to explore this in greater detail later in the lab when we configure NGINX to use a TLS certificate.
 
 #### Instance CVEs
 
-The NGINX One Console displays the number of CVEs associated with the NGINX instance as well as their severity.  You can also find out more information about each CVE
+The NGINX One Console displays the number of CVEs associated with the NGINX instance as well as their severity. You can also find out more information about each CVE
 with a link to the CVE Program website with extensive details about the CVE in question.
 
 #### Configuration Recommendations
@@ -46,17 +46,17 @@ We'll get to explore this in greater detail later in the lab when we configure t
 
 The NGINX One Console also provides various details about the NGINX instance such as:
 
-    | Instance Type | Description |
-    | --- | --- |
-    | Availability | The availability status of the NGINX instance |
-    | Data Plane Key | The data plane key associated with the NGINX instance |
-    | Hostname | The hostname of the NGINX instance |
-    | Last Seen | The last time the NGINX instance was seen |
-    | NGINX Agent Version | The version of the NGINX Agent running on the instance |
-    | NGINX Config Path | The path to the NGINX configuration file |
-    | Operating System | The operating system running on the instance |
-    | Registration Time | The time when the NGINX instance was registered |
-    | Instance Type | The type of the NGINX instance |
+| Instance Type | Description |
+| --- | --- |
+| Availability | The availability status of the NGINX instance |
+| Data Plane Key | The data plane key associated with the NGINX instance |
+| Hostname | The hostname of the NGINX instance |
+| Last Seen | The last time the NGINX instance was seen |
+| NGINX Agent Version | The version of the NGINX Agent running on the instance |
+| NGINX Config Path | The path to the NGINX configuration file |
+| Operating System | The operating system running on the instance |
+| Registration Time | The time when the NGINX instance was registered |
+| Instance Type | The type of the NGINX instance |
 
 ### Explore NGINX One dashboard
 
@@ -64,33 +64,33 @@ The NGINX One Dashboard provides an at-a-glance view of metrics and findings abo
 
 You can navigate to the NGINX One Dashboard view by selecting *Dashboard* under the *Overview* section on the left.
 
-![Dashboard Side Menu](media/lab1-5.png)
+![Dashboard Side Menu](media/part2-03.png)
 
 You now see a Dashboard view like the example shown below.
 
-![Dashboard View](media/lab1-6.png)
+![Dashboard View](media/part2-04.png)
 
 This view provides the following metrics for all NGINX instances.
 
-    | Metric Type | Description |
-    | --- | --- |
-    | Availability | The overall reachability and availability of your NGINX fleet is displayed here. |
-    | NGINX Versions | We can see at a glance what proportion of our fleet is running Plus vs. OSS, and how many instances are running outdated or non-standard versions. |
-    | OS Distribution | Similarly, we can see which OSes are part of the fleet. |
-    | Certificates | This chart provides insight on expiring certificates that need attention, as well as expired ones that should be removed. |
-    | Configuration Recommendations | NGINX One analyzes the configuration files on all of the instances it manages. When a configuration presents a potential security risk or is otherwise not in accordance with best practices, a recommendation is shown. |
-    | CVEs | Any CVEs that apply to an instance in your fleet are shown here. |
-    | CPU Utilization | The instances with the highest CPU Utilization are shown here for quick visibility into potential performance issues. |
-    | Memory Utilization | Top memory consumers are also shown here. |
-    | Disk Space Utilization | Along with CPU and memory, instances with the highest disk utilization are shown here to surface possible disk space issues. |
-    | Unsuccessful Responses | Instances with the most 4xx or 5xx errors appear here to identify potential attacks, misconfigurations, or upstream application issues. |
-    | Network Usage | Top network consumers can help identify targets for optimization. Unusual traffic patterns could potentially indicate an attack attempt. |
+| Metric Type | Description |
+| --- | --- |
+| Availability | The overall reachability and availability of your NGINX fleet is displayed here. |
+| NGINX Versions | We can see at a glance what proportion of our fleet is running Plus vs. OSS, and how many instances are running outdated or non-standard versions. |
+| OS Distribution | Similarly, we can see which OSes are part of the fleet. |
+| Certificates | This chart provides insight on expiring certificates that need attention, as well as expired ones that should be removed. |
+| Configuration Recommendations | NGINX One analyzes the configuration files on all of the instances it manages. When a configuration presents a potential security risk or is otherwise not in accordance with best practices, a recommendation is shown. |
+| CVEs | Any CVEs that apply to an instance in your fleet are shown here. |
+| CPU Utilization | The instances with the highest CPU Utilization are shown here for quick visibility into potential performance issues. |
+| Memory Utilization | Top memory consumers are also shown here. |
+| Disk Space Utilization | Along with CPU and memory, instances with the highest disk utilization are shown here to surface possible disk space issues. |
+| Unsuccessful Responses | Instances with the most 4xx or 5xx errors appear here to identify potential attacks, misconfigurations, or upstream application issues. |
+| Network Usage | Top network consumers can help identify targets for optimization. Unusual traffic patterns could potentially indicate an attack attempt. |
 
 **Drilling Down**
 
 Clicking a detail line in any of these charts will let you drill-down and see the instances affected by that particular finding.
 
-![NGINX Drilling Down View](media/lab1-7.png)
+![NGINX Drilling Down View](media/part2-05.png)
 
 ---
 
@@ -114,24 +114,24 @@ The stub_status allows users to collect basic metrics about the NGINX instance s
 
 1. Click the *Configuration* link near the top of the instance screen. You will be presented with the configuration editor.
 
-    ![Configuration link](media/lab3-1.png)
+    ![Configuration link](media/part2-06.png)
 
 
 #### NGINX Configuration
 
 Now let's take a look at what the **/etc/nginx/nginx.conf** configuration is doing:
 
-    ```nginx
-    user  nginx;
-    worker_processes  auto;
+```nginx
+user  nginx;
+worker_processes  auto;
 
-    error_log  /var/log/nginx/error.log notice;
-    pid        /var/run/nginx.pid;
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
 
-    events {
-        worker_connections  1024;
-    }
-    ```
+events {
+    worker_connections  1024;
+}
+```
 
 Let's break down this portion of the NGINX configuration:
 
@@ -147,16 +147,16 @@ This line configures how many worker processes NGINX will create to handle incom
 
 The *auto* value tells NGINX to:
 
-    * On systems with multiple CPU cores, create a worker process for each core.
-    * On systems with a single CPU core, use the system's default maximum process limit (usually 1024).
-    * Consider other factors like memory availability and load when deciding on the optimal number of workers.
+* On systems with multiple CPU cores, create a worker process for each core.
+* On systems with a single CPU core, use the system's default maximum process limit (usually 1024).
+* Consider other factors like memory availability and load when deciding on the optimal number of workers.
 
 **3. error_log  /var/log/nginx/error.log notice;**
 
 This line configures how NGINX logs errors that occur during execution. The *notice* level is set, which means that:
 
-    * Errors with a severity level greater than or equal to NOTICE will be logged.
-    * Other error levels (e.g., ERROR, WARNING) won't be logged.
+* Errors with a severity level greater than or equal to NOTICE will be logged.
+* Other error levels (e.g., ERROR, WARNING) won't be logged.
 
 The log file location */var/log/nginx/error.log* indicates where NGINX will write its error messages. This is the standard log location for most Linux distributions.
 
@@ -170,27 +170,27 @@ In this case, the PID is written to */var/run/nginx.pid*, which is a common loca
 
 This line specifies the maximum number of simultaneous connections a worker process can handle. In this case, it's set to 1024, which means each worker process will be able to accept up to 1024 simultaneous client connections.
 
-    ```nginx
-    http {
-        include       /etc/nginx/mime.types;
-        default_type  application/octet-stream;
+```nginx
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
 
-        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                        '$status $body_bytes_sent "$http_referer" '
-                        '"$http_user_agent" "$http_x_forwarded_for"';
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
 
-        access_log  /var/log/nginx/access.log  main;
+    access_log  /var/log/nginx/access.log  main;
 
-        sendfile        on;
-        #tcp_nopush     on;
+    sendfile        on;
+    #tcp_nopush     on;
 
-        keepalive_timeout  65;
+    keepalive_timeout  65;
 
-        #gzip  on;
+    #gzip  on;
 
-        include /etc/nginx/conf.d/*.conf;
-    }
-    ```
+    include /etc/nginx/conf.d/*.conf;
+}
+```
 
 Here's a brief explanation of this portion of the NGINX configuration:
 
@@ -228,28 +228,28 @@ Includes all configuration files in the specified directory (e.g., virtual hosts
 
 Now lets take a look at what the **/etc/nginx/conf.d/default.conf** configuration is doing:
 
-    ```nginx
-    server {
-        listen       80 default_server;
-        server_name  localhost;
+```nginx
+server {
+    listen       80 default_server;
+    server_name  localhost;
 
-        #access_log  /var/log/nginx/host.access.log  main;
+    #access_log  /var/log/nginx/host.access.log  main;
 
-        location / {
-            root   /usr/share/nginx/html;
-            index  index.html index.htm;
-        }
-
-        #error_page  404              /404.html;
-
-        # redirect server error pages to the static page /50x.html
-        #
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   /usr/share/nginx/html;
-        }
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
     }
-    ```
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+```
 
 Here's a brief overview of this NGINX configuration:
 
@@ -278,49 +278,49 @@ The configuration also sets up error handling:
 
 1. Click the *Edit Configuration* button above the editor.
 
-    ![Edit Configuration link](media/lab3-2.png)
+    ![Edit Configuration link](media/part2-07.png)
 
 1. Select the **/etc/nginx/conf.d/default.conf** file from the tree view on the left side of the configuration editor.
 
-    ![Select default.conf file](media/lab3-3.png)
+    ![Select default.conf file](media/part2-08.png)
 
 1. Edit the selected file to include a location block at the end of the server block with
     the **stub_status** directive. Add the following location block to the server block:
 
-        ```nginx
-            location = /nginx_status {
-                stub_status;
-            }
-        ```
+    ```nginx
+        location = /nginx_status {
+            stub_status;
+        }
+    ```
 
     The file should like this (commented out configurations have been removed):
 
-        ```nginx
-        server {
-            listen       80 default_server;
-            server_name  localhost;
+    ```nginx
+    server {
+        listen       80 default_server;
+        server_name  localhost;
 
-            #access_log  /var/log/nginx/host.access.log  main;
+        #access_log  /var/log/nginx/host.access.log  main;
 
-            location / {
-                root   /usr/share/nginx/html;
-                index  index.html index.htm;
-            }
-
-            #error_page  404              /404.html;
-
-            # redirect server error pages to the static page /50x.html
-            #
-            error_page   500 502 503 504  /50x.html;
-            location = /50x.html {
-                root   /usr/share/nginx/html;
-            }
-
-            location = /nginx_status {
-                stub_status;
-            }
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
         }
-        ```
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+
+        location = /nginx_status {
+            stub_status;
+        }
+    }
+    ```
 
 1. You will see that there is a message below the editor:
 
@@ -330,31 +330,31 @@ The configuration also sets up error handling:
     - **Why?** NGINX One includes a configuration advisor and it identified that exposing the **stub_status** endpoint open to the world is considered a security risk.
     - We can remediate this by adding an ACL to the **/nginx_status** location block to only allow our lab environments's local networks and NGINX Agent (running locally on the instance) to access the stub status endpoint.
 
-    ![config warning](media/lab3-4.png)
+    ![config warning](media/part2-09.png)
 
 1. Update that section of the configuration to the following:
 
-        ```nginx
-            location /nginx_status {
-                stub_status;
-                allow 10.0.0.0/8;
-                allow 172.18.0.0/16;
-                allow 127.0.0.1;
-                deny all;
-            }
-        ```
+    ```nginx
+        location /nginx_status {
+            stub_status;
+            allow 10.0.0.0/8;
+            allow 172.18.0.0/16;
+            allow 127.0.0.1;
+            deny all;
+        }
+    ```
 
     Note that the warning should disappear.
 
 1. Click *Next* to display the diff viewer. This view will show you the changes made to the configuration.
 
-    ![Diff viewer](media/lab3-5.png)
+    ![Diff viewer](media/part2-10.png)
 
 1. Click *Save and Publish*. You will see a status message indicating changes are being published, followed by a success message after several seconds.
 
-    ![Publish config pending](media/lab3-6.png)
+    ![Publish config pending](media/part2-11.png)
 
-    ![Publish config success](media/lab3-7.png)
+    ![Publish config success](media/part2-12.png)
 
 1. Check that the *stub_status* module is working by clicking the *Check* button below.
 
@@ -366,70 +366,70 @@ The configuration also sets up error handling:
 
 ### Using a TLS certificate
 
-In this section, we will configure our **<GetVariable name="nginx-plus-1" />** NGINX instance to leverage an SSL/TLS certificate.
+In this section, we will configure our **<GetVariable name="nginx-plus-1" />** NGINX instance to leverage an existing TLS certificate for encrypted communication. Later, we will perform more advanced certificate functions in [Part 4](./nginx-one-4.mdx) of this lab.
 
 1. In the NGINX One Console, edit the **/etc/nginx/conf.d/default.conf** file again on the **<GetVariable name="nginx-plus-1" />** instance. Add the following to the server block:
 
-        ```nginx
-            listen 443 ssl;
-            ssl_certificate /etc/nginx/ssl/wildcard.f5demos.com.crt.pem;
-            ssl_certificate_key /etc/nginx/ssl/wildcard.f5demos.com.key.pem;
-        ```
+    ```nginx
+        listen 443 ssl;
+        ssl_certificate /etc/nginx/ssl/wildcard.f5demos.com.crt.pem;
+        ssl_certificate_key /etc/nginx/ssl/wildcard.f5demos.com.key.pem;
+    ```
 
 1. Click *Next* to display the diff viewer. This view will show you the changes made to the configuration.
 
-    ![Diff viewer](media/lab3-9.png)
+    ![Diff viewer](media/part2-13.png)
 
 1. Click *Save and Publish*. You will see a status message indicating changes are being published, followed by a success message after several seconds.
 
 1. Click the *Details* link on the page. You should now see the certificate, its validity status, expiration date, and subject name.
 
-    ![Details link](media/lab3-10.png)
+    ![Details link](media/part2-14.png)
 
 1. The *details* page will also show a new recommendation. You can view the configuration, and recommendations by clicking the *View Configuration* link in the *Configuration Recommendations* section.
 
-    ![Certificate status](media/lab3-11.png)
+    ![Certificate status](media/part2-15.png)
 
 1. Select the *default.conf* file from the file picker. Note the blue dots and the number "1" next to default.conf; the configuration viewer highlights the location(s) of any recommendations it has for the NGINX configuration.
 
-    ![Configuration Viewer](media/lab3-12.png)
+    ![Configuration Viewer](media/part2-16.png)
 
 1. Notice the editor has a "Best Practice" notice indicating that *default_server* should set. Update the configuration to acknowledge this recommendation. <br />&nbsp;<br />The entire **/etc/nginx/conf.d/default.conf** file should now look as follows (commented out configurations have been removed):
 
-        ```nginx
-        server {
-            listen       80 default_server;
-            server_name  localhost;
+    ```nginx
+    server {
+        listen       80 default_server;
+        server_name  localhost;
 
-            listen 443 ssl default_server;
-            ssl_certificate /etc/nginx/ssl/wildcard.f5demos.com.crt.pem;
-            ssl_certificate_key /etc/nginx/ssl/wildcard.f5demos.com.key.pem;
+        listen 443 ssl default_server;
+        ssl_certificate /etc/nginx/ssl/wildcard.f5demos.com.crt.pem;
+        ssl_certificate_key /etc/nginx/ssl/wildcard.f5demos.com.key.pem;
 
-            #access_log  /var/log/nginx/host.access.log  main;
+        #access_log  /var/log/nginx/host.access.log  main;
 
-            location / {
-                root   /usr/share/nginx/html;
-                index  index.html index.htm;
-            }
-
-            #error_page  404              /404.html;
-
-            # redirect server error pages to the static page /50x.html
-            #
-            error_page   500 502 503 504  /50x.html;
-            location = /50x.html {
-                root   /usr/share/nginx/html;
-            }
-
-            location /nginx_status {
-                stub_status;
-                allow 10.0.0.0/8;
-                allow 172.18.0.0/16;
-                allow 127.0.0.1;
-                deny all;
-            }
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
         }
-        ```
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+
+        location /nginx_status {
+            stub_status;
+            allow 10.0.0.0/8;
+            allow 172.18.0.0/16;
+            allow 127.0.0.1;
+            deny all;
+        }
+    }
+    ```
 
 1. Check your work:<br />&nbsp;<br />To check that the **<GetVariable name="nginx-plus-1" />** instance is now listening on 443 click the *Check* button below.
 
@@ -451,26 +451,26 @@ Config Sync Groups allow us to group multiple NGINX instances and leverage an id
 
 1. Click on *Add Config Sync Group*.
 
-    ![Add Config Sync Group](media/lab5-1.png)
+    ![Add Config Sync Group](media/part2-17.png)
 
 1. On the right, enter your unique lab deployment name, **<GetVariable name="petname" />**, then select *Create* on the bottom.
 
-    ![Create New Config Sync Group](media/lab5-2.png)
+    ![Create New Config Sync Group](media/part2-18.png)
 
 1. Your unique Config Sync Group **<GetVariable name="petname" />** should be in the list.
 
-    ![New Config Sync Group](media/lab5-3.png)
+    ![New Config Sync Group](media/part2-19.png)
 
 You can now explore your Config Sync Group by selecting **<GetVariable name="petname" />**.
 When you select it, there are two tabs named *Details* and *Configuration*.
 
 On the *Details* tab, there are two views: *Details* represents additional details of this group and *Instances* represents the NGINX instances that are in this group.
 
-![Details View](media/lab5-4.png)
+![Details View](media/part2-20.png)
 
 On the *Configuration* tab, there is a view that defines the NGINX configurations to use for all NGINX instances in this Config Sync Group.
 
-![Configuration View](media/lab5-5.png)
+![Configuration View](media/part2-21.png)
 
 Notice the configuration is empty when you first create a Config Sync Group. There are two ways to handle the initial configuration.
 
@@ -493,9 +493,9 @@ select *Use existing Key* -> provide *Data Plane Key*
 select *Docker Container* tab.
 
 The instructions on the screen tell you how to:
-    - Login to the NGINX private registry
-    - Pull an NGINX Plus instance from the NGINX private registry
-    - Run the container with the required NGINX One Console connection details
+- Login to the NGINX private registry
+- Pull an NGINX Plus instance from the NGINX private registry
+- Run the container with the required NGINX One Console connection details
 
 But for this lab, we have automated this process for you:
 
@@ -522,39 +522,39 @@ But for this lab, we have automated this process for you:
 
 1. Now, in the NGINX One Console, look at your Config Sync Group and you should see a new instance registered. You may need to click the *Refresh* button.
 
-    ![First NGINX Instance](media/lab5-6.png)
+    ![First NGINX Instance](media/part2-22.png)
 
 1. When you select the *Configuration* tab, notice the configuration here is identical to your first NGINX instance you just added.
 
 1. Based on what you learned editing instance configuration, update the Config Sync Group configuration file **/etc/nginx/conf.d/default.conf** with the example below:
 
-        ```nginx
-        server {
-            listen       80 default_server;
-            server_name  localhost;
+    ```nginx
+    server {
+        listen       80 default_server;
+        server_name  localhost;
 
-            #access_log  /var/log/nginx/host.access.log  main;
+        #access_log  /var/log/nginx/host.access.log  main;
 
-            location / {
-                root   /usr/share/nginx/html;
-                index  index.html index.htm;
-            }
-
-            #error_page  404              /404.html;
-
-            # redirect server error pages to the static page /50x.html
-            #
-            error_page   500 502 503 504  /50x.html;
-            location = /50x.html {
-                root   /usr/share/nginx/html;
-            }
-
-            location /test_header {
-                add_header X-Test-App true;
-                return 200 'HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><body>Howdy!</body></html>';
-            }
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
         }
-        ```
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+
+        location /test_header {
+            add_header X-Test-App true;
+            return 200 'HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><body>Howdy!</body></html>';
+        }
+    }
+    ```
 
 1. Now we will test your configuration by clicking the *Check* button below:
 
@@ -593,7 +593,7 @@ Now that we have added our first NGINX Plus instance to the Config Sync Group, l
 
 1. Verify the new NGINX instance is part of your *<GetVariable name="petname" />* Config Sync Group and wait for the Config Sync Status to transition from *Sync in Progress* to *In Sync*.
 
-    ![Added Second NGINX Plus Instance](media/lab5-7.png)
+    ![Added Second NGINX Plus Instance](media/part2-23.png)
 
 1. Test that the configuration was synchronized to all instances:
     <APICheckContainer>
@@ -619,47 +619,47 @@ Now that we have two instances in the **<GetVariable name="petname" />** Config 
 
 1. Based on what you have already learned, add the following section to the **server** block of the **/etc/nginx/conf.d/default.conf** file:
 
-        ```bash
-            location /test_publish {
-                default_type text/html;
-                return 200 '<html><body><h1>Published change made from NGINX One Config Sync Group</h1></body></html>';
-            }
-        ```
+    ```bash
+        location /test_publish {
+            default_type text/html;
+            return 200 '<html><body><h1>Published change made from NGINX One Config Sync Group</h1></body></html>';
+        }
+    ```
 
     The entire file should now look as follows:
 
-        ```nginx
-        server {
-            listen       80 default_server;
-            server_name  localhost;
+    ```nginx
+    server {
+        listen       80 default_server;
+        server_name  localhost;
 
-            #access_log  /var/log/nginx/host.access.log  main;
+        #access_log  /var/log/nginx/host.access.log  main;
 
-            location / {
-                root   /usr/share/nginx/html;
-                index  index.html index.htm;
-            }
-
-            #error_page  404              /404.html;
-
-            # redirect server error pages to the static page /50x.html
-            #
-            error_page   500 502 503 504  /50x.html;
-            location = /50x.html {
-                root   /usr/share/nginx/html;
-            }
-
-            location /test_header {
-                add_header X-Test-App true;
-                return 200 'HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><body>Howdy!</body></html>';
-            }
-
-            location /test_publish {
-                default_type text/html;
-                return 200 '<html><body><h1>Published change made from NGINX One Config Sync Group</h1></body></html>';
-            }
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
         }
-        ```
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+
+        location /test_header {
+            add_header X-Test-App true;
+            return 200 'HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><body>Howdy!</body></html>';
+        }
+
+        location /test_publish {
+            default_type text/html;
+            return 200 '<html><body><h1>Published change made from NGINX One Config Sync Group</h1></body></html>';
+        }
+    }
+    ```
 
 1. Click *Next*, then *Save and Publish*.
 
@@ -711,7 +711,7 @@ To remove an NGINX Plus instance from this Config Sync Group:
 
 1. Click the *Actions* link for the **<GetVariable name="nginx-plus-3" />** instance and choose *Delete*.
 
-    ![Remove Instance](media/lab5-8.png)
+    ![Remove Instance](media/part2-24.png)
 
 1. Confirm by clicking *Delete*.
 
@@ -730,17 +730,17 @@ the Config Sync Group.
 
 1. Select *Config Sync Groups* under *Manage* on the left to bring up a list of all Config Sync Groups.
 
-    ![List Config Sync Group](media/lab5-9.png)
+    ![List Config Sync Group](media/part2-25.png)
 
 1. Based on the work in the previous lab, in the NGINX One Console, create a new Config Sync Group named **<GetVariable name="petname" />-oss**
 
 1. You will create a custom NGINX configuration before any NGINX instances are added to the Config Sync Group. In the Config Sync Group you just created, click the *Configuration* tab then click on *Edit Configuration*.
 
-    ![Manually Create Initial Configuration](media/lab5-10.png)
+    ![Manually Create Initial Configuration](media/part2-26.png)
 
 1. A text editor window appears that allows you to define the configuration to use for the NGINX instances in this group.
 
-    ![Manual Configuration](media/lab5-11.png)
+    ![Manual Configuration](media/part2-27.png)
 
 1. Insert the following NGINX configuration into the **/etc/nginx/nginx.conf** file:
 
@@ -775,11 +775,11 @@ the Config Sync Group.
 
 1. Click *Add File* to create a file named **/etc/nginx/conf.d/default.conf**
 
-    ![Name File](media/lab5-12.png)
+    ![Name File](media/part2-28.png)
 
 1. Be sure the new file is selected in the text editor:
 
-    ![Select File](media/lab5-13.png)
+    ![Select File](media/part2-29.png)
 
 1. Use the following NGINX configuration for **/etc/nginx/conf.d/default.conf**
 
@@ -807,11 +807,11 @@ the Config Sync Group.
 
 1. After you complete the above, it should look like the following screenshot:
 
-    ![Final Config View](media/lab5-14.png)
+    ![Final Config View](media/part2-30.png)
 
 1. Select *Next*, then *Save and Publish*.
 
-    ![Final Diff](media/lab5-15.png)
+    ![Final Diff](media/part2-31.png)
 
 1. Now let's add two new NGINX Open Source instances pre-configured to join this Config Sync Group. Select *Run* for each NGINX OSS instance below. As a convenience, the dataplane key and Config Sync Group have already been provided to the containers.
 
@@ -871,7 +871,7 @@ the Config Sync Group.
 
 1. Return to the *Details* tab on the console to verify that the two new NGINX OSS instances have been added to the **<GetVariable name="petname" />-oss** Config Sync Group:
 
-    ![NGINX OSS instances appear in the oss config sync group](media/lab5-16.png)
+    ![NGINX OSS instances appear in the oss config sync group](media/part2-32.png)
 
 Great! Now you have now pushed a customized NGINX configuration to all NGINX instances that joined a Config Sync Group.
 
@@ -879,11 +879,11 @@ Great! Now you have now pushed a customized NGINX configuration to all NGINX ins
 
 Great job! Through the use of Config Sync Groups, you have now accomplished a common Day-2 operation of scaling or upgrading your NGINX instances and NGINX One Console made this process extremely easy and fast!  You can also do this via the [NGINX One Console API](https://docs.nginx.com/nginx-one/api/api-reference-guide/) if you prefer to handle these steps through a pipeline.
 
-    > :point_right: It is possible to mix NGINX Plus and NGINX OSS instances in a Config Sync Group. However, the NGINX configuration must be compatible for both the NGINX Plus and NGINX OSS instances. For example, you will not be able to publish configurations that are exclusive to NGINX Plus, like [JWT authentication](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-jwt-authentication/) to NGINX OSS. However, the ability to mix NGINX editions in a Config Sync Group can be very valuable in certain situations, such as when migrating from NGINX OSS to NGINX Plus.
+> :point_right: It is possible to mix NGINX Plus and NGINX OSS instances in a Config Sync Group. However, the NGINX configuration must be compatible for both the NGINX Plus and NGINX OSS instances. For example, you will not be able to publish configurations that are exclusive to NGINX Plus, like [JWT authentication](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-jwt-authentication/) to NGINX OSS. However, the ability to mix NGINX editions in a Config Sync Group can be very valuable in certain situations, such as when migrating from NGINX OSS to NGINX Plus.
 
-## Lab Cleanup
+## Cleanup
 
-Time to clean up the remaining resources you created in this lab. As a safety precaution, the NGINX One console will not allow you to delete an instance that is online. We will first have to shut down the instances before deleting them from the NGINX One console.
+Time to clean up the remaining resources you created in this part of the lab. As a safety precaution, the NGINX One console will not allow you to delete an instance that is online. We will first have to shut down the instances before deleting them from the NGINX One console.
 
 1. Click **Stop** on all the Docker instances displayed below:
 
@@ -959,28 +959,28 @@ Time to clean up the remaining resources you created in this lab. As a safety pr
 
 1. Wait until your **<GetVariable name="petname" />*** instances transition into the **Unavailable** state before proceeding. You may need to click the *Refresh* button at the top right of the instance list.
 
-    ![Instance Unavailable](media/cleanup-3.png)
+    ![Instance Unavailable](media/cleanup-03.png)
 
 1. For each of your **<GetVariable name="petname" />*** instances, select the *Actions* "..." context menu, and select
     *Delete*.
 
     > :warning: **Warning:** Make sure you are deleting your own instances and not someone else’s.
 
-    ![Deleting an instance](media/cleanup-4.png)
+    ![Deleting an instance](media/cleanup-04.png)
 
 1. Confirm the deletion.
 
-    ![Confirming the deletion](media/cleanup-5.png)
+    ![Confirming the deletion](media/cleanup-05.png)
 
 1. From the NGINX One console, in the left-hand menu in the *Manage* section, select *Config Sync Groups*.
 
 1. Delete your **<GetVariable name="petname" />*** Config Sync Groups by selecting the *Actions* "..." context menu, then select *Delete* for each.
 
-    ![Delete Config Sync Group](media/cleanup-8.png)
+    ![Delete Config Sync Group](media/cleanup-08.png)
 
 1. Confirm the deletion.
 
-    ![Confirming the deletion](media/cleanup-9.png)
+    ![Confirming the deletion](media/cleanup-09.png)
 
 1. From the NGINX One console, in the left-hand menu in the *Manage* section, select *Data Plane Keys*.
 
@@ -988,11 +988,11 @@ Time to clean up the remaining resources you created in this lab. As a safety pr
 
     > :warning: **Warning:** Make sure you are revoking your own key and not someone else’s.
 
-    ![Revoking a Data Plane Key](media/cleanup-6.png)
+    ![Revoking a Data Plane Key](media/cleanup-06.png)
 
 1. Confirm the revocation.
 
-    ![Confirming the revocation](media/cleanup-7.png)
+    ![Confirming the revocation](media/cleanup-07.png)
 
 1. Select **Revoked Keys**. Then, select the context menu for the Data Plane Key you created in lab 1, and select *Delete*.
 
@@ -1002,9 +1002,8 @@ Time to clean up the remaining resources you created in this lab. As a safety pr
 
     ![Confirming the deletion](media/cleanup-11.png)
 
-## Optional Lab
+## Moving On
 
-If you would like to continue to the optional portion of the lab, click [here](./nginx-one-3.mdx).
-Otherwise, this is the end of the lab.
+In this lab, much of the work to connect instances to the NGINX One Console has been done for you. Part 3 of this lab is focused on manually connecting NGINX instances to the console, and is *optional*. If you would like to continue to this optional portion of the lab, click [here](./nginx-one-3.mdx).
 
-Thank you for your time and attention to experience NGINX One Console!
+Otherwise, Part 4 of the lab is focused on the Certificate Management features of the console. [Proceed to Part 4 of the lab](./nginx-one-4.mdx).

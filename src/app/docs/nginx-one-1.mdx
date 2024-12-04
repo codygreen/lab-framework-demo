@@ -50,30 +50,32 @@ Once you join the UDF session, your UDF deployment will start and create an ephe
 
 1. Once your ephemeral account is created, you will receive an email to set or update your password. Click the **Update Password** link in the email. Check the spam folder for the account used to register with UDF if you can't find the email.
 
-    ![XC Console Email](media/lab0-01.png)
+    ![XC Console Email](media/part1-01.png)
 
 1. Update your password. Click **Submit**.
 
-    ![image](media/lab0-02.png)
+    ![image](media/part1-02.png)
 
 1. Click **Log In**.
 
-    ![image](media/lab0-03.png)
+    ![image](media/part1-03.png)
 
-1. Once redirected to the F5 Distributed Cloud console login, enter the lab tenant name (*f5-xc-lab-app*), and click **Next**. Enter your email and password and click **Sign in**.
+1. Once redirected to the F5 Distributed Cloud console login, enter the lab tenant name (*f5-xc-lab-app*), and click **Next**.
 
-    ![image](media/lab0-11.png)
-    ![image](media/lab0-10.png)
+    ![image](media/part1-04.png)
+
+1. Enter your email and password and click **Sign in**.
+
+    ![image](media/part1-05.png)
 
 1. Check the radio box and click **Accept and Agree** after reviewing terms.
 
-    ![image](media/lab0-05.png)
+    ![image](media/part1-06.png)
 
 1. F5 XC console "persona" and the "skill level" settings dictate how services and configuration options are presented to the user. These settings are currently not applicable to the NGINX One console. Make any valid selection for each dialog. Click **Next** or **Get Started** depending on the dialog.
 
-    ![image](media/lab0-06.png)
-
-    ![image](media/lab0-07.png)
+    ![image](media/part1-07.png)
+    ![image](media/part1-08.png)
 
 1. Several **Guidance ToolTips** might appear. These are used to inform users of new features when the F5 XC console is updated. Close the dialogues and continue.
 
@@ -85,25 +87,25 @@ Once logged into the F5 XC console, the "home" screen shows you various tiles wh
 
 1. Click the **NGINX One** tile from the home screen.
 
-    ![NGINX One in the XC Console](media/lab1-1.png)
+    ![NGINX One in the XC Console](media/part1-09.png)
 
 1. The NGINX One "welcome" screen will appear. Click **Visit Service** to proceed to the NGINX One console.
 
-    ![The NGINX One Welcome Screen](media/lab1-2.png)
+    ![The NGINX One Welcome Screen](media/part1-10.png)
 
 1. The NGINX One Dashboard shows an overview of your environment, including availability, platform and version distribution, and CVEs/configuration recommendations. Your dashboard will vary depending on what is installed in your tenant. Feel free to click around and explore.
 
-    ![NGINX One Dashboard](media/lab1-3.png)
+    ![NGINX One Dashboard](media/part1-11.png)
 
 1. In the left-hand menu in the *Manage* section is the *Instances* link. You may or may not have any existing instances in your tenant. Don’t worry if there aren’t any, you will be deploying two instances later in the lab. If there are any existing instances, click an instance’s hostname to view its details.
 
-    ![NGINX One instance details](media/lab1-4.png)
+    ![NGINX One instance details](media/part1-12.png)
 
 ## Connecting to the Console
 
 NGINX One uses an agent installed alongside NGINX to communicate with the NGINX One service.
 
-![There are two instances in the customer environment: one Plus and one OSS. An additional NGINX Agent is installed alongside NGINX in each instance, and the Agent communicates between the NGINX instance and the NGINX One service.](media/lab2-1.png)
+![There are two instances in the customer environment: one Plus and one OSS. An additional NGINX Agent is installed alongside NGINX in each instance, and the Agent communicates between the NGINX instance and the NGINX One service.](media/part1-13.png)
 
 The agent uses a Data Plane Key to authenticate and identify itself to NGINX One. In this lab we will create a new Data Plane Key, and use it to install the NGINX Agent on the NGINX Plus instance.
 
@@ -124,13 +126,13 @@ You will notice it appear throughout the lab guide content. The use of this name
 
 1. Click **Generate**.
 
-    ![Generating a Data Plane Key](media/lab2-4.png)
+    ![Generating a Data Plane Key](media/part1-14.png)
 
 1. The Data Plane Key will be displayed. Click the *Copy* icon to copy the key to the clipboard.
 
     > :warning: **Warning:** *SAVE THIS KEY SOMEWHERE SAFE.* There is no way to retrieve the key after you click **close**. This key will be used in multiple labs.
 
-    ![Data Plane Key](media/lab2-5.png)
+    ![Data Plane Key](media/part1-15.png)
 
 1. Now enter the Data Plane Key in the *Set Variable* component below and click the **Save** button; this will allow the lab guide to use the key in further steps.
 
@@ -197,4 +199,4 @@ Now that we have a data plane key, we can attach our first NGINX instance to the
 
 Now, lets get started on the lab!
 
-[Proceed to the lab](./nginx-one-2.mdx)
+[Proceed to Part 2 of the lab](./nginx-one-2.mdx)

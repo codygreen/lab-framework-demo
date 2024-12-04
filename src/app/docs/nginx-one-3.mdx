@@ -1,10 +1,10 @@
 ---
-title: NGINX One Console (Manual Configuration)
-description: An optional lab continuing usage of the NGINX One Console
+title: NGINX One Console Lab - Part 3 (Optional)
+description: Manual configuration of NGINX instances to use the NGINX One Console
 order: 3
 ---
 
-## NGINX Plus (Optional)
+## Manually Configure NGINX Plus
 
 The NGINX One Console supports both NGINX Plus and NGINX OSS. Both products leverage the NGINX Agent to communicate with the NGINX One Console API.
 The UDF blueprint contains a Ubuntu host with NGINX Plus installed.  In this section we will install NGINX Agent and connect this instance to the NGINX One Console.
@@ -25,13 +25,13 @@ Since you were instructed to revoke your Data Plane Key at the end of the previo
 
 1. Click **Generate**.
 
-    ![Generating a Data Plane Key](media/lab2-4.png)
+    ![Generating a Data Plane Key](media/part1-14.png)
 
 1. The Data Plane Key will be displayed. Click the *Copy* icon to copy the key to the clipboard.
 
     > :warning: **Warning:** *SAVE THIS KEY SOMEWHERE SAFE.* There is no way to retrieve the key after you click **close**. This key will be used until the completion of this lab.
 
-    ![Data Plane Key](media/lab2-5.png)
+    ![Data Plane Key](media/part1-15.png)
 
 ### Create a Config Sync Group
 
@@ -72,18 +72,18 @@ Config Sync Group you created above. In the command below, take the following ac
 
 1. Click its hostname to view the instance details.
 
-    ![Instance list](media/optional1-1.png)
+    ![Instance list](media/part3-01.png)
 
 1. Explore the instance details.
 
-    ![Instance Details](media/optional1-2.png)
+    ![Instance Details](media/part3-02.png)
 
 <APICheck
 url="http://10.1.1.4"
 targetStatusCode={200}
 />
 
-## NGINX Docker (Optional)
+## Manually Configure NGINX in Docker
 
 The **Lab Framework** from the UDF environment has **docker** installed and is setup so it can run an NGINX Plus container image. The container image we will use here is **private-registry.nginx.com/nginx-plus/agent:debian** which has NGINX Plus with the Agent. If you want to see a list of all NGINX Plus with Agent image tags, refer to the [documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/#pulling-the-image).
 
@@ -99,7 +99,7 @@ The **Lab Framework** from the UDF environment has **docker** installed and is s
 
 1. Select the *Docker Container* tab.
 
-    ![Add New NGINX Plus Container](media/lab5-17.png)
+    ![Add New NGINX Plus Container](media/part3-03.png)
 
     > **Note:** This system already cached the container image, so Steps 1 and 2 from the image above can be skipped.
 
@@ -132,7 +132,7 @@ command below, take the following actions:
 
 1. In the NGINX One Console, navigate to *Instances*. You will see a new NGINX Plus instance added to the NGINX One Console. This instance will be randomly named based on the Docker container that was created, since a name was not provided.
 
-    ![Container instance in list](media/optional1-3.png)
+    ![Container instance in list](media/part3-04.png)
 
 1. Use the API Check below to ensure that the NGINX instance is responding.
 
@@ -146,17 +146,17 @@ targetStatusCode={200}
 Great job! You successfully added NGINX Instances to NGINX One Console by following instructions given from the console itself!
 You added an NGINX Virtual Machine instance and an NGINX container instance!
 
-## Lab Cleanup
+## Cleanup
 
-Time to clean up the resources you created in this lab. As a safety precaution, the NGINX One Console will not allow you to delete an instance that is online. We will first have to shut down the instances before deleting them from the NGINX One Console.
+Time to clean up the resources you created in this part of the lab. As a safety precaution, the NGINX One Console will not allow you to delete an instance that is online. We will first have to shut down the instances before deleting them from the NGINX One Console.
 
 1. In the UDF deployment for this lab, click *Details* for the **NGINX Plus** component.
 
-    ![Select the NGINX component details](media/cleanup-1.png)
+    ![Select the NGINX component details](media/cleanup-01.png)
 
 1. Click the **Stop** button for this component.
 
-    ![Select the NGINX component details](media/cleanup-2.png)
+    ![Select the NGINX component details](media/cleanup-02.png)
 
 
 1. Open a Web Shell to the **Lab Framework** UDF instance.
@@ -187,17 +187,17 @@ Time to clean up the resources you created in this lab. As a safety precaution, 
 
 1. Confirm the deletion.
 
-    ![Confirming the deletion](media/cleanup-5.png)
+    ![Confirming the deletion](media/cleanup-05.png)
 
 1. From the NGINX One Console, in the left-hand menu in the *Manage* section, select *Config Sync Groups*.
 
 1. Delete your **<GetVariable name="petname" />-manual** Config Sync Group by selecting the *Actions* "..." context menu, then select *Delete*.
 
-    ![Delete Config Sync Group](media/cleanup-8.png)
+    ![Delete Config Sync Group](media/cleanup-08.png)
 
 1. Confirm the deletion.
 
-    ![Confirming the deletion](media/cleanup-9.png)
+    ![Confirming the deletion](media/cleanup-09.png)
 
 1. From the NGINX One Console, in the left-hand menu in the *Manage* section, select *Data Plane Keys*.
 
@@ -205,11 +205,11 @@ Time to clean up the resources you created in this lab. As a safety precaution, 
 
     > :warning: **Warning:** Make sure you are revoking your own key and not someone else’s.
 
-    ![Revoking a Data Plane Key](media/cleanup-6.png)
+    ![Revoking a Data Plane Key](media/cleanup-06.png)
 
 1. Confirm the revocation.
 
-    ![Confirming the revocation](media/cleanup-7.png)
+    ![Confirming the revocation](media/cleanup-07.png)
 
 1. Select **Revoked Keys**. Then, select the context menu for the Data Plane Key you created at the beginning of this
 lab, and select *Delete*.
@@ -222,8 +222,6 @@ lab, and select *Delete*.
 
 1. You can close out all **Web Shell** windows that were opened during this lab.
 
-## End of Lab
+## Moving On
 
-You have reached the end of the optional lab.
-
-Thank you for your time and attention to experience NGINX One Console!
+Part 4 of the lab is focused on the Certificate Management features of the console. [Proceed to Part 4 of the lab](./nginx-one-4.mdx).

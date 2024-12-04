@@ -1,6 +1,6 @@
 "use client";
 
-export async function DownloadItem({ item, fileName }) {
+export function DownloadItem({ item, fileName }) {
 
   const file = new Blob([item], {
     type: "text/plain"
