@@ -87,8 +87,6 @@ async function getLocalDocument(documentName) {
  */
 async function getRemoteDocument(url, cacheSeconds) {
 
-  // Attempt to influence cache control attempt from https://stackoverflow.com/questions/64792450/avoiding-getting-cached-content-from-raw-githubusercontent-com
-  const cacheBustingUrl = `${url}?token=${new Date().getMilliseconds()}`
   const options = {
     method: "GET",
     supportHeaderParams: true,
@@ -100,7 +98,7 @@ async function getRemoteDocument(url, cacheSeconds) {
       revalidate: cacheSeconds
     }
   }
-  const res = await fetch(cacheBustingUrl, options)
+  const res = await fetch(url, options)
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
