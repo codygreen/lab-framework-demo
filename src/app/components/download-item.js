@@ -2,12 +2,10 @@
 
 export function DownloadItem({ item, fileName }) {
 
-  const file = new Blob([item], {
-    type: "text/plain"
-  });
+  const dataHref = `data:text/plain;charset=utf-8,${encodeURIComponent(item)}`
 
   return (
-    <a download={fileName} target="_blank" rel="noreferrer" href={URL.createObjectURL(file)} style={{
+    <a download={fileName} target="_blank" rel="noreferrer" href={dataHref} style={{
       textDecoration: "inherit",
       color: "inherit",
     }}>
